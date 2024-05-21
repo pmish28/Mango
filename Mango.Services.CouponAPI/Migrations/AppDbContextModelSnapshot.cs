@@ -33,12 +33,31 @@ namespace Mango.Services.CouponAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("DiscountAmount")
+                        .HasColumnType("float");
+
                     b.Property<double>("MinAmount")
                         .HasColumnType("float");
 
                     b.HasKey("CouponId");
 
                     b.ToTable("Coupons");
+
+                    b.HasData(
+                        new
+                        {
+                            CouponId = 1,
+                            CouponCode = "10OFF",
+                            DiscountAmount = 10.0,
+                            MinAmount = 20.0
+                        },
+                        new
+                        {
+                            CouponId = 2,
+                            CouponCode = "20OFF",
+                            DiscountAmount = 20.0,
+                            MinAmount = 40.0
+                        });
                 });
 #pragma warning restore 612, 618
         }
